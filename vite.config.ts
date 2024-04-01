@@ -13,6 +13,7 @@ export default defineConfig({
     vue(),
     VueDevTools(), // ...
     AutoImport({
+      imports: ['vue', 'vue-router', '@vueuse/core'],
       resolvers: [ElementPlusResolver()],
     }),
     Components({
