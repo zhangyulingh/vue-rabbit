@@ -2,7 +2,6 @@
 import { getCategoryAPI } from '@/api/category'
 import { getBannerAPI } from '@/api/home'
 import GoodsItem from '../Home/components/GoodsItem.vue'
-import { id } from 'element-plus/es/locale'
 
 const categoryData = ref({})
 const route = useRoute()
