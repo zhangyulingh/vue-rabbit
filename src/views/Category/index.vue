@@ -2,14 +2,18 @@
 import { getCategoryAPI } from '@/api/category'
 import { getBannerAPI } from '@/api/home'
 import GoodsItem from '../Home/components/GoodsItem.vue'
+import { id } from 'element-plus/es/locale'
 
 const categoryData = ref({})
 const route = useRoute()
-const getCategory = async () => {
-  const res = await getCategoryAPI(route.params.id)
+const getCategory = async (id = route.params.id) => {
+  const res = await getCategoryAPI(id)
   categoryData.value = res.result
 }
 onMounted(() => getCategory())
+onBeforeRouteUpdate(to => {
+  getCategory(to.params.id)
+})
 const bannerData = ref([])
 const getBanner = async () => {
   const res = await getBannerAPI({
