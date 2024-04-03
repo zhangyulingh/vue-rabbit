@@ -3,6 +3,7 @@ import { fetchHotGoodsAPI } from '@/api/detail'
 const props = defineProps({
   hotType: {
     type: Number,
+    default: 1,
   },
 })
 const TYPEMAP = {
