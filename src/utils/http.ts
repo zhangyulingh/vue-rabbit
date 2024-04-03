@@ -24,6 +24,7 @@ httpInstance.interceptors.response.use(
   },
   error => {
     // 对响应错误做点什么
+    ElMessage.error(error.message)
     return Promise.reject(error)
   },
 )
