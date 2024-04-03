@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { fetchHotGoodsAPI } from '@/api/detail'
-
+const props = defineProps({
+  hotType: {
+    type: Number,
+  },
+})
+const TYPEMAP = {
+  1: '24小时热榜',
+  2: '周热榜',
+}
+const title = computed(() => TYPEMAP[props.hotType])
 const hotGoods = ref<any>([])
 const route = useRoute()
 const getHotGoods = async () => {
   const res = await fetchHotGoodsAPI({
     id: route.params.id,
-    type: 1,
+    type: props.hotType,
   })
   hotGoods.value = res.result
 }
@@ -17,7 +26,7 @@ onMounted(() => {
 
 <template>
   <div class="goods-hot">
-    <h3>周日榜单</h3>
+    <h3>{{ title }}</h3>
     <!-- 商品区块 -->
     <RouterLink
       to="/"
