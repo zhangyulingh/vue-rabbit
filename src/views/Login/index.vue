@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { loginAPI } from '@/api/user'
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
 const form = ref({
   account: 'xiaotuxian001',
   password: '123456',
@@ -35,10 +36,7 @@ const handleSubmit = () => {
   const { account, password } = form.value
   formRef.value.validate(async valid => {
     if (valid) {
-      const res = await loginAPI({
-        account,
-        password,
-      })
+      const res = await userStore.getUserInfo({ account, password })
       console.log(res)
 
       ElMessage.success('登录成功')

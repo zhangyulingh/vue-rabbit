@@ -18,14 +18,13 @@ httpInstance.interceptors.request.use(
 )
 // 响应拦截器
 httpInstance.interceptors.response.use(
-  response => {
-    // 对响应数据做点什么
-    return response.data
-  },
-  error => {
-    // 对响应错误做点什么
-    ElMessage.error(error.message)
-    return Promise.reject(error)
+  res => res.data,
+  e => {
+    ElMessage({
+      type: 'error',
+      message: e.response.data.msg,
+    })
+    return Promise.reject(e)
   },
 )
 export default httpInstance
