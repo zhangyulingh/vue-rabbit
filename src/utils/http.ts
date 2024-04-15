@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useUserStore } from '@/stores/user'
 
 // 创建axios实例
 const httpInstance = axios.create({
@@ -9,11 +10,16 @@ const httpInstance = axios.create({
 httpInstance.interceptors.request.use(
   config => {
     // 在发送请求之前做些什么
+    const userStore = useUserStore()
+    const token = userStore.userInfo.token
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
     return config
   },
   error => {
     // 对请求错误做些什么
-    return Promise.reject(error)
+    Promise.reject(error)
   },
 )
 // 响应拦截器
