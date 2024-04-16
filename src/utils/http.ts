@@ -26,11 +26,11 @@ httpInstance.interceptors.request.use(
 httpInstance.interceptors.response.use(
   res => res.data,
   e => {
-    const userStore = useUserStore()
     ElMessage({
       type: 'error',
-      message: e.response.data.msg,
+      message: e.response.data.message,
     })
+    const userStore = useUserStore()
     if (e.response.status === 401) {
       userStore.clearUserInfo()
       router.push('/login')
