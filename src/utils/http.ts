@@ -9,7 +9,6 @@ const httpInstance = axios.create({
 // 请求拦截器
 httpInstance.interceptors.request.use(
   config => {
-    // 在发送请求之前做些什么
     const userStore = useUserStore()
     const token = userStore.userInfo.token
     if (token) {
