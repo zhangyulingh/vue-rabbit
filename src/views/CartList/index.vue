@@ -2,8 +2,9 @@
 import { useCartStore } from '@/stores/cartStore'
 const cartStore = useCartStore()
 
-const singleCheck = selected => {
-  console.log(selected)
+const singleCheck = (i, selected) => {
+  console.log(i, selected)
+  cartStore.singleCheck(i.skuId, selected)
 }
 </script>
 
@@ -30,7 +31,7 @@ const singleCheck = selected => {
               <td>
                 <el-checkbox
                   :model-value="i.selected"
-                  @change="() => singleCheck"
+                  @change="selected => singleCheck(i, selected)"
                 />
               </td>
               <td>

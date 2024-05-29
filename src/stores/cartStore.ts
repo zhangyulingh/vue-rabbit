@@ -17,13 +17,17 @@ export const useCartStore = defineStore(
       const idx = cartList.value.findIndex(item => skuID === item.skuId)
       cartList.value.splice(idx, 1)
     }
+    const singleCheck = (skuId, selected) => {
+      const item = cartList.value.find(item => item.skuId === skuId)
+      item.selected = selected
+    }
     const allCount = computed(() =>
       cartList.value.reduce((a, c) => a + c.count, 0),
     )
     const allPrice = computed(() =>
       cartList.value.reduce((a, c) => a + c.count * c.price, 0),
     )
-    return { cartList, addCart, delCart, allCount, allPrice }
+    return { cartList, addCart, delCart, allCount, allPrice, singleCheck }
   },
   {
     persist: true,
