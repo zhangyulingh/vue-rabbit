@@ -4,17 +4,17 @@ export const useCartStore = defineStore(
   'cart',
   () => {
     const cartList = ref([])
-    const addCart = (goods: { skuId: any }) => {
+    const addCart = goods => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const item = cartList.value.find(item => goods.skuId === goods.skuId)
+      const item = cartList.value.find(item => goods.skuId === item.skuId)
       if (item) {
         item.count++
       } else {
-        cartList.value.push({ ...goods, count: 1 })
+        cartList.value.push(goods)
       }
     }
-    const delCart = (goods: { skuId: any }) => {
-      const idx = cartList.value.findIndex(item => item.skuId === goods.skuId)
+    const delCart = skuID => {
+      const idx = cartList.value.findIndex(item => skuID === item.skuId)
       cartList.value.splice(idx, 1)
     }
     const allCount = computed(() =>

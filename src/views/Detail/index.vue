@@ -32,7 +32,7 @@ const addCart = () => {
       price: goods.value.price,
       count: count.value,
       skuId: skuObj.skuId,
-      attrsText: skuObj.attrsText,
+      attrsText: skuObj.specsText,
       selected: true,
     })
     ElMessage.success('加入购物车成功')
