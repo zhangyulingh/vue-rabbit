@@ -91,7 +91,8 @@ const allCheck = selected => {
       <div class="action">
         <div class="batch">
           共 {{ cartStore.allCount }} 件商品，已选择
-          {{ cartStore.selectedCount }} 件，商品合计：
+          {{ cartStore.selectedPrice }}
+          件，商品合计：
           <span class="red">¥{{ cartStore.selectedPrice }} </span>
         </div>
         <div class="total">

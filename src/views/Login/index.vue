@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/userStore'
 const userStore = useUserStore()
 const form = ref({
   account: 'xiaotuxian001',
@@ -343,3 +343,4 @@ const handleSubmit = () => {
   color: #fff;
 }
 </style>
+@/stores/userStore
