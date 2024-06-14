@@ -8,7 +8,7 @@ const likeList = ref([])
 
 const getLikeList = async () => {
   const res = await getLikeListAPI({
-    limit: 6,
+    limit: 3,
   })
   likeList.value = res.result
 }
